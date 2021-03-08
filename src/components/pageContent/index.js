@@ -18,7 +18,7 @@ const cardData = [
   
       name: "Amount in products" ,
       textColor: "text-xs font-weight-bold text-success text-uppercase mb-1",
-      info: 546456,
+      info: `$${546456}`, // = a "$"+546456
       icon: "fas fa-dollar-sign fa-2x text-gray-300"
   
     },
@@ -34,7 +34,7 @@ const cardData = [
   
 ];
 
-function pageContent(){
+function PageContent(){
 
   return(
     <>
@@ -45,9 +45,7 @@ function pageContent(){
             <h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
           </div>
           <div className="row"> 
-            <Metrica name={cardData[0].name} textColor={cardData[0].textColor} info={cardData[0].info} icon={cardData[0].icon} />     
-            <Metrica name={cardData[1].name} textColor={cardData[1].textColor} info={cardData[1].info} icon={cardData[1].icon} /> 
-            <Metrica name={cardData[2].name} textColor={cardData[2].textColor} info={cardData[2].info} icon={cardData[2].icon} /> 
+            {cardData.map(({name, textColor, info, icon})=><Metrica key={name} name={name} textColor={textColor} info={info} icon={icon} />)} 
             <DataDB/>
             <Category/>
           </div>
@@ -58,4 +56,4 @@ function pageContent(){
 
   );
 
-}export default pageContent;
+}export default PageContent;

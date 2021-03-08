@@ -1,6 +1,26 @@
 import {useState,useEffect} from 'react'
 import CategoryCard from './categoryCard'
 
+const categoryNumber = [
+
+    {
+        category: "Categoria 1"
+    },
+    {
+        category: "Categoria 2"
+    },
+    {
+        category: "Categoria 3"
+    },
+    {
+        category: "Categoria 4"
+    },
+    {
+        category: "Categoria 5"
+    }
+
+]
+
 function Category() {
     
     
@@ -15,7 +35,7 @@ function Category() {
                 </div>
                 <div className="card-body">
                     <div className="row">
-                        <CategoryCard/>
+                        {categoryNumber.map(({category})=> <CategoryCard key={category} category={category}/>)}
                     </div>
                 </div>
             </div>
