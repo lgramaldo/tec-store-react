@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react'
+import NumberFormat from 'react-number-format'
 import Metrica from '../metrica';
 import DataDB from '../dataDB';
 import Category from '../category'
@@ -9,7 +10,7 @@ import '../../App.css'
 
 function PageContent(){
 
-
+  
   const [products,setProducts]=useState([]);
   const [users,setUsers]=useState([]);
 
@@ -40,7 +41,11 @@ function PageContent(){
     const amountProducts= products.reduce((acumulador,valorActual)=>{
     return acumulador+= valorActual.price
     },0);
-   
+    
+    function currencyFormat(amountProducts) {
+      return '$' + amountProducts.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+   }
+   const currencyAmountProduct =currencyFormat(amountProducts);
   
     const cardData = [
       {
@@ -56,7 +61,7 @@ function PageContent(){
     
         name: "Amount in products" ,
         textColor: "text-xs font-weight-bold text-success text-uppercase mb-1",
-        info:amountProducts,
+        info: currencyAmountProduct,
         icon: "fas fa-dollar-sign fa-2x text-gray-300"
     
       },

@@ -1,16 +1,16 @@
 
 
 
-function NavItem(){
+function NavItem(props){
 
 
 return(
   <>
                  
-     <li className="nav-item active">
-         <a className="nav-link" href="/">
-            <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+     <li className={props.estado}>
+         <a className="nav-link" href={props.link}>
+            <i className={props.icon}></i>
+            <span>{props.name}</span></a>
       </li>
   </>
 
